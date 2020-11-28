@@ -1,13 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import Search from "./search/search.jsx";
 const App = () => (
-  <form>
-    <input
-      type="text"
-      value={'sdfdf'}
-    />
-  </form>
+  <Search />
 );
 
 export default App;
