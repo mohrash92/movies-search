@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Button = ({ handleOnSubmit }) => (
-  <button onClick={(e) => handleOnSubmit(e)}>Search</button>
+const Button = ({ handleOnClick }) => (
+  <button onClick={handleOnClick}>Search</button>
 );
 
 export default Button;

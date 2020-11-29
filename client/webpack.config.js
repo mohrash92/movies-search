@@ -1,4 +1,13 @@
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+}, {});
 
 module.exports = {
     module: {
@@ -17,10 +26,15 @@ module.exports = {
                         loader: "html-loader"
                     }
                 ]
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
             }
         ]
     },
     plugins: [
+        new webpack.DefinePlugin(envKeys),
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html"
