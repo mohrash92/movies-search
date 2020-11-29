@@ -24,6 +24,6 @@ describe('Search', () => {
     searchWrapper.find('input').simulate('change', { target: { value: 'Tom Cruise'}});
     searchWrapper.simulate('submit', <form></form>);
 
-    expect(getSearchData).toHaveBeenCalledWith(<form />,'Tom Cruise');
+    expect(getSearchData).toHaveBeenCalledWith(<form />, 'Tom Cruise', expect.any(Function));
   });
 });
