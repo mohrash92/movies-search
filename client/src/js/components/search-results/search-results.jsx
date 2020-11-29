@@ -6,7 +6,7 @@ const SearchResults = ({ results }) => (
   <div className='search-results'>
     {
       results.map((result, index) => {
-        return <SearchResult key={index} title={result.title} posterPath={result.poster_path} />;
+        return <SearchResult key={index} title={result.title} posterPath={result.poster_path} id={result.id} />;
       })
     }
   </div>

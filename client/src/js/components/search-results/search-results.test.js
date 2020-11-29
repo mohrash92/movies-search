@@ -2,6 +2,8 @@ import React from 'react';
 import SearchResults from './search-results.jsx';
 
 import { mount, shallow } from 'enzyme';
+import {BrowserRouter as Router} from "react-router-dom";
+
 describe('SearchResults', () => {
   const results = [
     {
@@ -15,7 +17,11 @@ describe('SearchResults', () => {
   ];
 
   test('renders correct results when they are passed', () => {
-    const searchWrapper = mount(<SearchResults results={results}/>);
+    const searchWrapper = mount(
+      <Router>
+        <SearchResults results={results} />
+      </Router>
+    );
 
     expect(searchWrapper.find('.search-result').first().text()).toEqual('Jack Reacher: Never Go Back');
     expect(searchWrapper.find('.search-result').first().find("img").prop("src")).toEqual('https://image.tmdb.org/t/p/w500//wxLUQ1pIms3HAlVGYvEG9zg2kDs.jpg')

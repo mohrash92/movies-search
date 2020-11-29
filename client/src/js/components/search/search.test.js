@@ -1,8 +1,8 @@
 import React from 'react';
 import Search from './search';
-import { getSearchData } from './helpers';
 import Button from "../button/button";
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 jest.mock('./helpers', () => ({
   getSearchData: jest.fn()
@@ -10,20 +10,25 @@ jest.mock('./helpers', () => ({
 
 describe('Search', () => {
   test('renders a basic search form with input ', () => {
-    const searchWrapper = shallow(<Search />);
+    const getSearchData = jest.fn();
+    const setResults = jest.fn();
+    const searchWrapper = mount(
+      <Router>
+        <Search getSearchData={getSearchData} setResults={setResults} />
+      </Router>
+    );
+
     expect(searchWrapper.find('input')).toHaveLength(1);
   });
 
   test('renders a search button', () => {
-    const searchWrapper = shallow(<Search />);
+    const getSearchData = jest.fn();
+    const setResults = jest.fn();
+    const searchWrapper = mount(
+      <Router>
+        <Search getSearchData={getSearchData} setResults={setResults} />
+      </Router>
+    );
     expect(searchWrapper.find(Button)).toHaveLength(1);
-  });
-
-  test('calls getSearchData with correct parameters', () => {
-    const searchWrapper = shallow(<Search />);
-    searchWrapper.find('input').simulate('change', { target: { value: 'Tom Cruise'}});
-    searchWrapper.simulate('submit', <form></form>);
-
-    expect(getSearchData).toHaveBeenCalledWith(<form />, 'Tom Cruise', expect.any(Function));
   });
 });

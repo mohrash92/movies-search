@@ -1,15 +1,12 @@
 import React from 'react';
 import Button from "../button/button.jsx";
+import { withRouter } from 'react-router';
 import './search.css';
-import { getSearchData } from "./helpers";
-import SearchResults from "../search-results/search-results.jsx";
 
-const Search = () => {
+const Search = ({ getSearchData, setResults }) => {
   const { useRef, useEffect, useState } = React;
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState([]);
   const searchRef = useRef(null);
-
   const onChangeHandler = event => {
     setSearchTerm(event.target.value);
   };
@@ -24,9 +21,8 @@ const Search = () => {
       </label>
       <input type="search" id="search-input" name="search" ref={searchRef} onChange={onChangeHandler} value={searchTerm}/>
       <Button />
-      {results.length > 0 && <SearchResults results={results} />}
     </form>
   )
 };
 
-export default Search;
+export default withRouter(Search);

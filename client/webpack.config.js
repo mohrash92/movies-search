@@ -10,6 +10,9 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 }, {});
 
 module.exports = {
+    output: {
+        publicPath: '/'
+    },
     module: {
         rules: [
             {
@@ -36,6 +39,9 @@ module.exports = {
                 loader: "file-loader",
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         new webpack.DefinePlugin(envKeys),
