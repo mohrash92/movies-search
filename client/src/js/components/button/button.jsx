@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Button = ({ handleOnClick }) => (
-  <button onClick={handleOnClick}>Search</button>
+const Button = () => (
+  <button id='search-button'>Search</button>
 );
 
 export default Button;

@@ -16,12 +16,12 @@ const Search = () => {
   }, []);
 
   return (
-    <form role='search'>
+    <form role='search' onSubmit={(e) => getSearchData(e, searchTerm)}>
       <label htmlFor="search-input" className="visually-hidden">
           Search this site for movies, shows and actors
       </label>
       <input type="search" id="search-input" name="search" ref={search} onChange={onChangeHandler} value={searchTerm}/>
-      <Button handleOnClick={(e) => getSearchData(e, searchTerm)}/>
+      <Button />
     </form>
   )
 };
