@@ -4,10 +4,6 @@ import Button from "../button/button";
 import { mount } from 'enzyme';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-jest.mock('./helpers', () => ({
-  getSearchData: jest.fn()
-}));
-
 describe('Search', () => {
   test('renders a basic search form with input ', () => {
     const getSearchData = jest.fn();
