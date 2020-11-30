@@ -18,4 +18,16 @@ const getMovieTitle = (id, setMovieTitle) => {
     .then(json => setMovieTitle(json.title));
 };
 
-export { getSearchData, getShowDetails, getMovieTitle };
+const getPersonDetails = (id, setPersonDetails) => {
+  fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${process.env.API_KEY}`)
+    .then(res => res.json())
+    .then(json => setPersonDetails(json.cast));
+};
+
+const getPersonName = (id, setPersonName) => {
+  fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${process.env.API_KEY}`)
+    .then(res => res.json())
+    .then(json => setPersonName(json.name));
+};
+
+export { getSearchData, getShowDetails, getMovieTitle, getPersonDetails, getPersonName};

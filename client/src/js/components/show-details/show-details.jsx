@@ -1,5 +1,6 @@
 import React from 'react';
 import { getShowDetails, getMovieTitle } from '../../helpers';
+import {Link} from "react-router-dom";
 const ShowDetails = ({ match }) => {
   const { useState, useEffect } = React;
   const [showDetails, setShowDetails] = useState([]);
@@ -18,7 +19,7 @@ const ShowDetails = ({ match }) => {
         return (
           <div key={index} >
             <ul>
-              <li>{detail.name}</li>
+              <Link to={`/person/${detail.id}`}><h1>{detail.name}</h1></Link>
             </ul>
           </div>
         )
