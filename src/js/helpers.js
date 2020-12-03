@@ -1,4 +1,4 @@
-export const addCombinedToURLIfPerson = (mediaType) => {
+const addCombinedToURLIfPerson = (mediaType) => {
   if (mediaType ==='person'){
     return 'combined_'
   }
@@ -54,4 +54,4 @@ const getTitle = (id, setTitle, mediaType) => {
     .then(json => setTitle(setCorrectTitle(mediaType, json)));
 };
 
-export { getSearchData, getTitle, getDetails, setCorrectTitle, filterMediaTypes};
+export { getSearchData, getTitle, getDetails, setCorrectTitle, filterMediaTypes, addCombinedToURLIfPerson};
