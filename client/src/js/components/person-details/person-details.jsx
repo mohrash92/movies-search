@@ -1,15 +1,16 @@
 import React from 'react';
-import { getPersonDetails, getPersonName } from '../../helpers';
+import {getDetails, getTitle} from '../../helpers';
 import {Link} from "react-router-dom";
-const PersonDetails = ({ match }) => {
-  const { useState, useEffect } = React;
+
+const PersonDetails = ({match}) => {
+  const {useState, useEffect} = React;
   const [personDetails, setPersonDetails] = useState([]);
   const [personName, setPersonName] = useState([]);
-  const { params: { id } } = match;
+  const {params: {id}} = match;
 
   useEffect(() => {
-    getPersonDetails(id, setPersonDetails);
-    getPersonName(id, setPersonName);
+    getDetails(id, setPersonDetails, 'person');
+    getTitle(id, setPersonName, 'person');
   }, []);
 
   return (
@@ -17,10 +18,12 @@ const PersonDetails = ({ match }) => {
       <h1>Person Details: {personName} </h1>
       {personDetails.map((detail, index) => {
         return (
-          <div key={index} >
+          <div key={index}>
             <ul>
               {detail.title &&
-              <Link to={`/show/${detail.id}`}><li>{detail.title}</li></Link>
+                <Link to={`/${detail.media_type}/${detail.id}`}>
+                  <li>{detail.title}</li>
+                </Link>
               }
             </ul>
           </div>

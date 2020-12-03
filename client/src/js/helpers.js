@@ -1,33 +1,55 @@
-const getSearchData = (event, searchTerm, setResults, history) => {
+const addCombinedToURLIfPerson = (mediaType) => {
+  if (mediaType ==='person'){
+    return 'combined_'
+  }
+  return ''
+};
+
+const setCorrectTitle = (mediaType, json) => {
+  if (mediaType === 'tv' || mediaType === 'person') {
+    return json.name
+  } else {
+    return json.title
+  }
+};
+
+const filterMediaTypes = (movie, person, tv, json, checkedBox) => {
+  let results = [];
+  if(movie || person || tv) {
+    for (const [key, value] of Object.entries(checkedBox)) {
+      if (value) {
+        const movieResults = json.results.filter(result => result.media_type === key);
+        results.push(...movieResults)
+      }
+    }
+
+    return results;
+  }
+  return json.results;
+};
+
+const getSearchData = (event, searchTerm, setResults, history, checkedBox) => {
   event.preventDefault();
   history.push('/search')
-  fetch(`${process.env.MOVIE_DB_ENDPOINT}/search/movie?api_key=${process.env.API_KEY}&query=${searchTerm}`)
+  fetch(`${process.env.MOVIE_DB_ENDPOINT}/search/multi?api_key=${process.env.API_KEY}&query=${searchTerm}`)
     .then(res => res.json())
-    .then(json => setResults(json.results));
+    .then(json => {
+      const { movie, person, tv } = checkedBox;
+      setResults(filterMediaTypes(movie, person, tv, json, checkedBox));
+    }
+    );
 };
 
-const getShowDetails = (id, setShowDetails) => {
-  fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.API_KEY}`)
+const getDetails = (id, setDetails, mediaType) => {
+  fetch(`https://api.themoviedb.org/3/${mediaType}/${id}/${addCombinedToURLIfPerson(mediaType)}credits?api_key=${process.env.API_KEY}`)
     .then(res => res.json())
-    .then(json => setShowDetails(json.cast));
+    .then(json => setDetails(json.cast));
 };
 
-const getMovieTitle = (id, setMovieTitle) => {
-  fetch(`http://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}`)
+const getTitle = (id, setMovieTitle, mediaType) => {
+  fetch(`http://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.API_KEY}`)
     .then(res => res.json())
-    .then(json => setMovieTitle(json.title));
+    .then(json => setMovieTitle(setCorrectTitle(mediaType, json)));
 };
 
-const getPersonDetails = (id, setPersonDetails) => {
-  fetch(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${process.env.API_KEY}`)
-    .then(res => res.json())
-    .then(json => setPersonDetails(json.cast));
-};
-
-const getPersonName = (id, setPersonName) => {
-  fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${process.env.API_KEY}`)
-    .then(res => res.json())
-    .then(json => setPersonName(json.name));
-};
-
-export { getSearchData, getShowDetails, getMovieTitle, getPersonDetails, getPersonName};
+export { getSearchData, getTitle, getDetails};

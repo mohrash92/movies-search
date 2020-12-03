@@ -1,21 +1,21 @@
 import React from 'react';
 import { getDetails, getTitle } from '../../helpers';
 import {Link} from "react-router-dom";
-const ShowDetails = ({ match }) => {
+const MovieDetails = ({ match }) => {
   const { useState, useEffect } = React;
-  const [showDetails, setShowDetails] = useState([]);
-  const [showTitle, setShowTitle] = useState([]);
+  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieTitle, setMovieTitle] = useState([]);
   const { params: { id } } = match;
 
   useEffect(() => {
-    getDetails(id, setShowDetails, 'tv');
-    getTitle(id, setShowTitle, 'tv');
+    getDetails(id, setMovieDetails, 'movie');
+    getTitle(id, setMovieTitle, 'movie');
   }, []);
-  console.log("showTitle in show",  showTitle);
+  console.log("movieTitle in movie details",  movieTitle);
   return (
-    <div className="show-details">
-      <h1>Cast for {showTitle}</h1>
-      {showDetails.map((detail, index) => {
+    <div className="movie-details">
+      <h1>Cast for {movieTitle}</h1>
+      {movieDetails.map((detail, index) => {
         return (
           <div key={index} >
             <ul>
@@ -29,4 +29,4 @@ const ShowDetails = ({ match }) => {
   )
 };
 
-export default ShowDetails;
+export default MovieDetails;
