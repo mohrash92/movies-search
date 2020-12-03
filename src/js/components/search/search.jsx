@@ -30,8 +30,8 @@ const Search = ({ getSearchData, setResults, history, isChecked }) => {
 Search.propTypes = {
   getSearchData: PropTypes.func.isRequired,
   setResults: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
-  isChecked: PropTypes.bool
+  history: PropTypes.object.isRequired,
+  isChecked: PropTypes.object
 };
 
 export default withRouter(Search);

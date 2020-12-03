@@ -5,7 +5,7 @@ export const addCombinedToURLIfPerson = (mediaType) => {
   return ''
 };
 
-export const setCorrectTitle = (mediaType, json) => {
+const setCorrectTitle = (mediaType, json) => {
   if (mediaType === 'tv' || mediaType === 'person') {
     return json.name
   } else if (mediaType === 'movie'){
@@ -14,7 +14,7 @@ export const setCorrectTitle = (mediaType, json) => {
   return '';
 };
 
-export const filterMediaTypes = (json, checkedBox) => {
+const filterMediaTypes = (json, checkedBox) => {
   const { movie, person, tv } = checkedBox;
   let results = [];
 
@@ -54,4 +54,4 @@ const getTitle = (id, setTitle, mediaType) => {
     .then(json => setTitle(setCorrectTitle(mediaType, json)));
 };
 
-export { getSearchData, getTitle, getDetails};
+export { getSearchData, getTitle, getDetails, setCorrectTitle, filterMediaTypes};
