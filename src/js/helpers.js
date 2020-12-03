@@ -54,4 +54,4 @@ const getTitle = (id, setTitle, mediaType) => {
     .then(json => setTitle(setCorrectTitle(mediaType, json)));
 };
 
-export { getSearchData, getTitle, getDetails, setCorrectTitle, filterMediaTypes, addCombinedToURLIfPerson};
+export { getSearchData, getTitle, getDetails, setCorrectTitle, filterMediaTypes, addCombinedToURLIfPerson };
