@@ -2,6 +2,7 @@ import React from 'react';
 import Button from "../button/button.jsx";
 import { withRouter } from 'react-router';
 import './search.css';
+import PropTypes from "prop-types";
 
 const Search = ({ getSearchData, setResults, history, isChecked }) => {
   const { useRef, useEffect, useState } = React;
@@ -14,7 +15,7 @@ const Search = ({ getSearchData, setResults, history, isChecked }) => {
   useEffect(() => {
     searchRef.current.focus();
   }, []);
-    console.log("isChecked in Search.jsx", isChecked)
+
   return (
     <form role='search' onSubmit={(e) => getSearchData(e, searchTerm, setResults, history, isChecked)}>
       <label htmlFor="search-input" className="visually-hidden">
@@ -24,6 +25,13 @@ const Search = ({ getSearchData, setResults, history, isChecked }) => {
       <Button />
     </form>
   )
+};
+
+Search.propTypes = {
+  getSearchData: PropTypes.func.isRequired,
+  setResults: PropTypes.func.isRequired,
+  history: PropTypes.func.isRequired,
+  isChecked: PropTypes.bool
 };
 
 export default withRouter(Search);

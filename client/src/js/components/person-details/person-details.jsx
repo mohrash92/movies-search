@@ -1,6 +1,8 @@
 import React from 'react';
 import {getDetails, getTitle} from '../../helpers';
-import {Link} from "react-router-dom";
+import Details from "../details/details.jsx";
+import './person-details.css';
+import PropTypes from "prop-types";
 
 const PersonDetails = ({match}) => {
   const {useState, useEffect} = React;
@@ -17,21 +19,15 @@ const PersonDetails = ({match}) => {
     <div className="person-details">
       <h1>Person Details: {personName} </h1>
       {personDetails.map((detail, index) => {
-        return (
-          <div key={index}>
-            <ul>
-              {detail.title &&
-                <Link to={`/${detail.media_type}/${detail.id}`}>
-                  <li>{detail.title}</li>
-                </Link>
-              }
-            </ul>
-          </div>
-        )
+        return <Details key={index} path={`/${detail.media_type}/${detail.id}`} title={detail.title}/>
       })
       }
     </div>
   )
+};
+
+PersonDetails.propTypes = {
+  match: PropTypes.object
 };
 
 export default PersonDetails;

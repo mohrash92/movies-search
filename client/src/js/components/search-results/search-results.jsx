@@ -1,7 +1,9 @@
 import React from 'react';
 import SearchResult from '../search-result/search-result.jsx';
+import './search-results.css';
+import PropTypes from "prop-types";
 
-const SearchResults = ({ results, smash }) => (
+const SearchResults = ({ results = [] }) => (
   results && results.length > 0 &&
   <div className='search-results'>
     {
@@ -11,5 +13,9 @@ const SearchResults = ({ results, smash }) => (
     }
   </div>
 );
+
+SearchResult.propTypes = {
+  results: PropTypes.array.isRequired
+};
 
 export default SearchResults;

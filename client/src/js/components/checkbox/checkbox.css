@@ -1,0 +1,29 @@
+.checkbox {
+    float: left;
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 22px;
+}
+
+/*!* Hide the browser's default checkbox *!*/
+/*.checkbox input {*/
+/*    position: absolute;*/
+/*    opacity: 0;*/
+/*    cursor: pointer;*/
+/*    height: 0;*/
+/*    width: 0;*/
+/*}*/
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}

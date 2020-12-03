@@ -1,13 +1,18 @@
-Node version 10.13.0 - you can use nvm use and it will automatically detect
-The form 
+#Dependencies
+Node version 10.13.0 
 
-- Button is a separate component which can be easily reused by other teams etc
+- If you have nvm you can make use of the .nvmrc: `nvm use`
 
-- According to http://web-accessibility.carnegiemuseums.org/code/search/, a search bar should be set up with label and input  
- also I have added role='search' so that it can be easily identified a section of the page. This is all part of ARIA (W3C specification) and will benefit screen reader users 
- 
- 
- - Why is results list a separate component? - Because of different use cases, so for example if you wanted to re use the result experience but with a different search form then you could easily do so. Its not tightly coupled with the same search form. 
- 
+#Set up 
+- `npm i` Install the dependencies 
+- `npm build` make sure you have ran the build
 
+#Running
+- `npm start` and visit localhost:8080
 
+#Tests 
+
+- Unit tests are written using Enzyme and Jest:
+
+- `npm run test` to run all tests or:
+- `npm run test -- --watch` when developing

@@ -1,20 +1,23 @@
-const addCombinedToURLIfPerson = (mediaType) => {
+export const addCombinedToURLIfPerson = (mediaType) => {
   if (mediaType ==='person'){
     return 'combined_'
   }
   return ''
 };
 
-const setCorrectTitle = (mediaType, json) => {
+export const setCorrectTitle = (mediaType, json) => {
   if (mediaType === 'tv' || mediaType === 'person') {
     return json.name
-  } else {
+  } else if (mediaType === 'movie'){
     return json.title
   }
+  return {};
 };
 
-const filterMediaTypes = (movie, person, tv, json, checkedBox) => {
+export const filterMediaTypes = (json, checkedBox) => {
+  const { movie, person, tv } = checkedBox;
   let results = [];
+
   if(movie || person || tv) {
     for (const [key, value] of Object.entries(checkedBox)) {
       if (value) {
@@ -34,8 +37,7 @@ const getSearchData = (event, searchTerm, setResults, history, checkedBox) => {
   fetch(`${process.env.MOVIE_DB_ENDPOINT}/search/multi?api_key=${process.env.API_KEY}&query=${searchTerm}`)
     .then(res => res.json())
     .then(json => {
-      const { movie, person, tv } = checkedBox;
-      setResults(filterMediaTypes(movie, person, tv, json, checkedBox));
+      setResults(filterMediaTypes(json, checkedBox));
     }
     );
 };

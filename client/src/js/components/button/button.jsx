@@ -1,7 +1,8 @@
 import React from 'react';
+import './button.css';
 
 const Button = () => (
-  <button id='search-button'>Search</button>
+  <button className='search-button'>Search</button>
 );
 
 export default Button;

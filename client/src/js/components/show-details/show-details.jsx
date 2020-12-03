@@ -1,6 +1,8 @@
 import React from 'react';
 import { getDetails, getTitle } from '../../helpers';
-import {Link} from "react-router-dom";
+import Details from "../details/details.jsx";
+import PropTypes from "prop-types";
+
 const ShowDetails = ({ match }) => {
   const { useState, useEffect } = React;
   const [showDetails, setShowDetails] = useState([]);
@@ -11,22 +13,20 @@ const ShowDetails = ({ match }) => {
     getDetails(id, setShowDetails, 'tv');
     getTitle(id, setShowTitle, 'tv');
   }, []);
-  console.log("showTitle in show",  showTitle);
+
   return (
     <div className="show-details">
       <h1>Cast for {showTitle}</h1>
       {showDetails.map((detail, index) => {
-        return (
-          <div key={index} >
-            <ul>
-              <Link to={`/person/${detail.id}`}><h1>{detail.name}</h1></Link>
-            </ul>
-          </div>
-        )
+        return <Details key={index} path={`/person/${detail.id}`} title={detail.name}/>
       })
       }
     </div>
   )
+};
+
+ShowDetails.propTypes = {
+  match: PropTypes.object
 };
 
 export default ShowDetails;
