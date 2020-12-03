@@ -21,8 +21,8 @@ export const filterMediaTypes = (json, checkedBox) => {
   if(movie || person || tv) {
     for (const [key, value] of Object.entries(checkedBox)) {
       if (value) {
-        const movieResults = json.results.filter(result => result.media_type === key);
-        results.push(...movieResults)
+        const mediaResults = json.results.filter(result => result.media_type === key);
+        results.push(...mediaResults)
       }
     }
 
@@ -48,10 +48,10 @@ const getDetails = (id, setDetails, mediaType) => {
     .then(json => setDetails(json.cast));
 };
 
-const getTitle = (id, setMovieTitle, mediaType) => {
+const getTitle = (id, setTitle, mediaType) => {
   fetch(`http://api.themoviedb.org/3/${mediaType}/${id}?api_key=${process.env.API_KEY}`)
     .then(res => res.json())
-    .then(json => setMovieTitle(setCorrectTitle(mediaType, json)));
+    .then(json => setTitle(setCorrectTitle(mediaType, json)));
 };
 
 export { getSearchData, getTitle, getDetails};

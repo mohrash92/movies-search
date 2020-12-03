@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const MovieDetails = ({ match }) => {
   const { useState, useEffect } = React;
   const [movieDetails, setMovieDetails] = useState([]);
-  const [movieTitle, setMovieTitle] = useState([]);
+  const [movieTitle, setMovieTitle] = useState('');
   const { params: { id } } = match;
 
   useEffect(() => {

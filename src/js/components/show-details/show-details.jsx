@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const ShowDetails = ({ match }) => {
   const { useState, useEffect } = React;
   const [showDetails, setShowDetails] = useState([]);
-  const [showTitle, setShowTitle] = useState([]);
+  const [showTitle, setShowTitle] = useState('');
   const { params: { id } } = match;
 
   useEffect(() => {
