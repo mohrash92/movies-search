@@ -1,16 +1,16 @@
-#Dependencies
+# Dependencies
 Node version 10.13.0 
 
 - If you have nvm you can make use of the .nvmrc: `nvm use`
 
-#Set up 
+# Set up 
 - `npm i` Install the dependencies 
-- `npm build` make sure you have ran the build
+- `npm run build` make sure you have ran the build
 
-#Running
+# Running
 - `npm start` and visit localhost:8080
 
-#Tests 
+# Tests 
 
 - Unit tests are written using Enzyme and Jest:
 
