@@ -34,7 +34,7 @@ const App = () => {
   const setIsChecked = (event) => {
     setCheckboxData({...checkBoxData, [event.target.name] : event.target.checked });
   };
-  console.log("checkBoxData", checkBoxData);
+
   return (
     <Router>
       <Search getSearchData={getSearchData} setResults={setResults} isChecked={checkBoxData} />

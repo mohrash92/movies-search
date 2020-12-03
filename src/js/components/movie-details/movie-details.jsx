@@ -14,7 +14,7 @@ const MovieDetails = ({ match }) => {
     getDetails(id, setMovieDetails, 'movie');
     getTitle(id, setMovieTitle, 'movie');
   }, []);
-  console.log("movieTitle in movie details",  movieTitle);
+
   return (
     <div className="movie-details">
       <h1>Cast for {movieTitle}</h1>
