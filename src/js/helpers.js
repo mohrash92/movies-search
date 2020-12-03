@@ -11,7 +11,7 @@ export const setCorrectTitle = (mediaType, json) => {
   } else if (mediaType === 'movie'){
     return json.title
   }
-  return {};
+  return '';
 };
 
 export const filterMediaTypes = (json, checkedBox) => {

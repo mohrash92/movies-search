@@ -11,8 +11,8 @@ describe('addCombinedToURLIfPerson', () => {
 });
 
 describe('setCorrectTitle', () => {
-  test('setCorrectTitle returns the empty object by default', () => {
-    expect(setCorrectTitle()).toEqual({});
+  test('setCorrectTitle returns an empty string by default', () => {
+    expect(setCorrectTitle()).toEqual('');
   });
 
   test('setCorrectTitle returns the name when the mediaType is tv', () => {
