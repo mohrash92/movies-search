@@ -19,7 +19,13 @@ const MovieDetails = ({ match }) => {
     <div className="movie-details">
       <h1>Cast for {movieTitle}</h1>
       {movieDetails.map((detail, index) => {
-        return <Details key={index} path={`/person/${detail.id}`} title={detail.name}/>
+        return (
+          <Details
+            key={index}
+            path={`/person/${detail.id}`}
+            title={detail.name}
+          />
+        )
       })
       }
     </div>

@@ -17,11 +17,23 @@ const Search = ({ getSearchData, setResults, history, isChecked }) => {
   }, []);
 
   return (
-    <form role='search' onSubmit={(e) => getSearchData(e, searchTerm, setResults, history, isChecked)}>
+    <form
+      role='search'
+      onSubmit={(e) => {
+        getSearchData(e, searchTerm, setResults, history, isChecked)
+      }}
+    >
       <label htmlFor="search-input" className="visually-hidden">
           Search this site for movies, shows and actors
       </label>
-      <input type="search" id="search-input" name="search" ref={searchRef} onChange={onChangeHandler} value={searchTerm}/>
+      <input
+        type="search"
+        id="search-input"
+        name="search"
+        ref={searchRef}
+        onChange={onChangeHandler}
+        value={searchTerm}
+      />
       <Button />
     </form>
   )

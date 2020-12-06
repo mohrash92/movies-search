@@ -18,7 +18,13 @@ const ShowDetails = ({ match }) => {
     <div className="show-details">
       <h1>Cast for {showTitle}</h1>
       {showDetails.map((detail, index) => {
-        return <Details key={index} path={`/person/${detail.id}`} title={detail.name}/>
+        return (
+          <Details
+            key={index}
+            path={`/person/${detail.id}`}
+            title={detail.name}
+          />
+        )
       })
       }
     </div>

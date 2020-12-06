@@ -32,14 +32,25 @@ const App = () => {
   const [checkBoxData, setCheckboxData] = useState({});
 
   const setIsChecked = (event) => {
-    setCheckboxData({...checkBoxData, [event.target.name] : event.target.checked });
+    setCheckboxData(
+      {...checkBoxData, [event.target.name] : event.target.checked }
+    );
   };
 
   return (
     <Router>
-      <Search getSearchData={getSearchData} setResults={setResults} isChecked={checkBoxData} />
+      <Search
+        getSearchData={getSearchData}
+        setResults={setResults}
+        isChecked={checkBoxData}
+      />
       {mediaTypes.map((mediaType) => (
-        <CheckBox key={mediaType.key} mediaType={mediaType.name} isChecked={checkBoxData.isChecked} onChange={setIsChecked}/>
+        <CheckBox
+          key={mediaType.key}
+          mediaType={mediaType.name}
+          isChecked={checkBoxData.isChecked}
+          onChange={setIsChecked}
+        />
       ))}
       <Switch>
         <SearchResults path="/search" exact results={results} />

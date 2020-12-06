@@ -19,7 +19,13 @@ const PersonDetails = ({match}) => {
     <div className="person-details">
       <h1>Person Details: {personName} </h1>
       {personDetails.map((detail, index) => {
-        return <Details key={index} path={`/${detail.media_type}/${detail.id}`} title={detail.title}/>
+        return (
+          <Details
+            key={index}
+            path={`/${detail.media_type}/${detail.id}`}
+            title={detail.title}
+          />
+        )
       })
       }
     </div>
