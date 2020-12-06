@@ -1,29 +1,33 @@
-import { addCombinedToURLIfPerson, setCorrectTitle, filterMediaTypes } from './helpers';
+import {
+  addCombinedToURLIfPerson,
+  setCorrectTitle,
+  filterMediaTypes
+} from './helpers';
 
 describe('addCombinedToURLIfPerson', () => {
-  test('addCombinedToURLIfPerson returns an empty string by default', () => {
+  test('returns an empty string by default', () => {
     expect(addCombinedToURLIfPerson()).toBe('');
   });
 
-  test('addCombinedToURLIfPerson returns "combined_" if person is passed as mediaType', () => {
+  test('returns "combined_" if person is passed as mediaType', () => {
     expect(addCombinedToURLIfPerson('person')).toBe('combined_');
   })
 });
 
 describe('setCorrectTitle', () => {
-  test('setCorrectTitle returns an empty string by default', () => {
+  test('returns an empty string by default', () => {
     expect(setCorrectTitle()).toEqual('');
   });
 
-  test('setCorrectTitle returns the name when the mediaType is tv', () => {
+  test('returns the name when the mediaType is tv', () => {
     expect(setCorrectTitle('tv', { name: 'lala land'})).toBe('lala land');
   });
 
-  test('setCorrectTitle returns the name when the mediaType is person', () => {
+  test('returns the name when the mediaType is person', () => {
     expect(setCorrectTitle('person', { name: 'lala land'})).toBe('lala land');
   });
 
-  test('setCorrectTitle returns the title when the mediaType is movie', () => {
+  test('returns the title when the mediaType is movie', () => {
     expect(setCorrectTitle('movie', { title: 'lala land'})).toBe('lala land');
   });
 });
@@ -55,11 +59,11 @@ describe('filterMediaTypes', () => {
       total_results: 124
     }]
   }
-  test('filterMediaTypes returns results when non of the checkedBox data is set', () => {
+  test('returns results when non of the checkedBox data is set', () => {
     expect(filterMediaTypes(json, {})).toEqual(json.results);
   });
 
-  test('filterMediaTypes returns results for movies when it is defined in checkedBox', () => {
+  test('returns results for movies when it is defined in checkedBox', () => {
     const expectedResults = [{
       adult: false,
       backdrop_path: "/xySCWwZVuU03xOsJfs1Qk8yG2DF.jpg",
@@ -71,7 +75,7 @@ describe('filterMediaTypes', () => {
     expect(filterMediaTypes(json, { movie: true })).toEqual(expectedResults);
   });
 
-  test('filterMediaTypes returns results for tv when it is defined in checkedBox', () => {
+  test('returns results for tv when it is defined in checkedBox', () => {
     const expectedResults = [{
       adult: false,
       backdrop_path: "/xySCWwZVuUfsdfsdfsdfsdffasdfs.jpg",
@@ -83,7 +87,7 @@ describe('filterMediaTypes', () => {
     expect(filterMediaTypes(json, { tv: true })).toEqual(expectedResults);
   });
 
-  test('filterMediaTypes returns results for person when it is defined in checkedBox', () => {
+  test('returns results for person when it is defined in checkedBox', () => {
     const expectedResults = [  {
       adult: false,
       backdrop_path: "/xySCWwZdfgdfgdsfgsdfgdfgdfgdfg.jpg",
